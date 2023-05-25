@@ -44,6 +44,20 @@ button {
 button:hover {
     background-color: #677bc4;
 }
+
 h1 {
     text-align: center;
+}
+/* Larger screens */
+@media (min-width: 600px) {
+    .input-group, button {
+        width: 50%; /* set width for larger screens */
+    }
+}
+
+/* Even larger screens */
+@media (min-width: 900px) {
+    .input-group, button {
+        width: 20%; /* set width for even larger screens */
+    }
 }

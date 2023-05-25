@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <style>
         body {
@@ -18,6 +19,15 @@
     </style>
 </head>
 <body>
+    <div id="cover" style="position:fixed; top:0; bottom:0; left:0; right:0; background-color:rgba(0,0,0,0.75); z-index:9999; display:flex; align-items:center; justify-content:center;">
+        <form onsubmit="event.preventDefault(); checkPassword();" style="background-color:white; padding:20px; border-radius:5px;">
+            <label for="password">Enter password:</label>
+            <input type="password" id="password" />
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    
+
     <h1>ODDS Calculator</h1>
     <div class="input-group">
         <label for="num1">Input Sum of Currency 1:</label>
@@ -51,6 +61,14 @@
     <button onclick="calculate()">Calculate</button>
 
     <script>
+        function checkPassword() {
+    var password = document.getElementById("password").value;
+    if(password === "Odds") { // replace "YourPassword" with the actual password
+        document.getElementById("cover").style.display = "none";
+    } else {
+        alert("Wrong password");
+    }
+}
         function calculate() {
             // Get input values
             let num1 = parseFloat(document.getElementById('num1').value);
