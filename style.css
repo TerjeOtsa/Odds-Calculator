@@ -49,14 +49,14 @@ h1 {
     text-align: center;
 }
 /* Larger screens */
-@media (min-width: 600px) {
+@media (max-width: 600px) {
     .input-group, button {
         width: 80%; /* set width for larger screens */
     }
 }
 
 /* Even larger screens */
-@media (min-width: 900px) {
+@media (max-width: 900px) {
     .input-group, button {
         width: 70%; /* set width for even larger screens */
     }
