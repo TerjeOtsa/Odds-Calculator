@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .input-group {
+            margin-bottom: 10px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-group">
+        <label for="num1">Input number between 10 and 500 (optional):</label>
+        <input type="number" id="num1" min="10" max="500">
+    </div>
+
+    <div class="input-group">
+        <label for="num2">Input number between 1 and 5 (optional):</label>
+        <input type="number" id="num2" min="1" max="5">
+    </div>
+
+    <div class="input-group">
+        <label for="num3">Input number between 10 and 500 (optional):</label>
+        <input type="number" id="num3" min="10" max="500">
+    </div>
+
+    <div class="input-group">
+        <label for="num4">Input number between 1 and 5 (optional):</label>
+        <input type="number" id="num4" min="1" max="5">
+    </div>
+    <div class="input-group">
+        <label for="sum12">Sum of numbers 1 and 2:</label>
+        <input type="number" id="sum12" readonly>
+    </div>
+    
+    <div class="input-group">
+        <label for="sum34">Sum of numbers 3 and 4:</label>
+        <input type="number" id="sum34" readonly>
+    </div>
+
+    <button onclick="calculate()">Calculate</button>
+
+    <script>
+        function calculate() {
+            // Get input values
+            let num1 = parseFloat(document.getElementById('num1').value);
+            let num2 = parseFloat(document.getElementById('num2').value);
+            let num3 = parseFloat(document.getElementById('num3').value);
+            let num4 = parseFloat(document.getElementById('num4').value);
+
+            // Check which input is missing
+            if (isNaN(num1)) {
+                num1 = num3 * num4 / num2;
+                if (num1 < 10 || num1 > 500) {
+                    alert('Calculated value is out of range!');
+                    return;
+                }
+                document.getElementById('num1').value = num1.toFixed(2);
+            }
+            else if (isNaN(num2)) {
+                num2 = num1 * num3 / num4;
+                if (num2 < 1 || num2 > 5) {
+                    alert('Calculated value is out of range!');
+                    return;
+                }
+                document.getElementById('num2').value = num2.toFixed(2);
+            }
+            else if (isNaN(num3)) {
+                num3 = num1 * num2 / num4;
+                if (num3 < 10 || num3 > 500) {
+                    alert('Calculated value is out of range!');
+                    return;
+                }
+                document.getElementById('num3').value = num3.toFixed(2);
+            }
+            else if (isNaN(num4)) {
+                num4 = num1 * num2 / num3;
+                if (num4 < 1 || num4 > 5) {
+                    alert('Calculated value is out of range!');
+                    return;
+                }
+                document.getElementById('num4').value = num4.toFixed(2);
+            }
+            else {
+                alert('All fields are filled!');
+            }
+            // Calculate sums
+let sum12 = num1 * num2;
+let sum34 = num3 * num4;
+
+// Display sums
+document.getElementById('sum12').value = sum12.toFixed(2);
+document.getElementById('sum34').value = sum34.toFixed(2);
+
+        }
+    </script>
+</body>
+</html>
